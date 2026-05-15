@@ -2,11 +2,8 @@ import Anthropic from "@anthropic-ai/sdk";
 
 // 문화재청 공공데이터 API 호출
 async function fetchHeritageData(keyword) {
-  const apiKey = process.env.HERITAGE_API_KEY;
-  if (!apiKey || apiKey === "your_heritage_api_key_here") return [];
-
   try {
-    const url = `http://www.khs.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=&ccbaCtcd=&pageUnit=5&pageIndex=1&ccbaMnm1=${encodeURIComponent(keyword)}&apiKey=${apiKey}`;
+    const url = `http://www.khs.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=&ccbaCtcd=&pageUnit=5&pageIndex=1&ccbaMnm1=${encodeURIComponent(keyword)}`;
     const res = await fetch(url, { next: { revalidate: 3600 } });
     const text = await res.text();
 
