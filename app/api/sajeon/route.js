@@ -86,7 +86,7 @@ ${era ? `\n설정 시대: ${era}` : ""}${heritageContext}`;
   } catch (error) {
     console.error("API error:", error);
     return Response.json(
-      { error: "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요." },
+      { error: error?.message || "서버 오류가 발생했습니다. 잠시 후 다시 시도해주세요." },
       { status: 500 }
     );
   }
