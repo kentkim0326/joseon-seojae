@@ -1,7 +1,5 @@
 import Anthropic from "@anthropic-ai/sdk";
 
-const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
-
 // 문화재청 공공데이터 API 호출
 async function fetchHeritageData(keyword) {
   const apiKey = process.env.HERITAGE_API_KEY;
@@ -34,6 +32,8 @@ export async function POST(request) {
     if (!process.env.ANTHROPIC_API_KEY) {
       return Response.json({ error: "API 키가 설정되지 않았습니다." }, { status: 500 });
     }
+
+    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
     const { question, era, category } = await request.json();
 
