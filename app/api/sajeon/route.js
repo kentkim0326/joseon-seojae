@@ -6,7 +6,7 @@ async function fetchHeritageData(keyword) {
   if (!apiKey || apiKey === "your_heritage_api_key_here") return [];
 
   try {
-    const url = `http://www.cha.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=&ccbaCtcd=&pageUnit=5&pageIndex=1&ccbaMnm1=${encodeURIComponent(keyword)}&apiKey=${apiKey}`;
+    const url = `http://www.khs.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=&ccbaCtcd=&pageUnit=5&pageIndex=1&ccbaMnm1=${encodeURIComponent(keyword)}&apiKey=${apiKey}`;
     const res = await fetch(url, { next: { revalidate: 3600 } });
     const text = await res.text();
 
