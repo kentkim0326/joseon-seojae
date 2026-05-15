@@ -31,6 +31,10 @@ async function fetchHeritageData(keyword) {
 
 export async function POST(request) {
   try {
+    if (!process.env.ANTHROPIC_API_KEY) {
+      return Response.json({ error: "API 키가 설정되지 않았습니다." }, { status: 500 });
+    }
+
     const { question, era, category } = await request.json();
 
     if (!question?.trim()) {
