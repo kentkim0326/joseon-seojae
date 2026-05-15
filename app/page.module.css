@@ -1,0 +1,444 @@
+.root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 헤더 ── */
+.header {
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.headerInner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 1.5rem;
+  position: relative;
+  z-index: 1;
+  animation: fadeUp 0.6s ease both;
+}
+.headerDeco {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    rgba(196, 146, 42, 0.04) 40px,
+    rgba(196, 146, 42, 0.04) 41px
+  );
+}
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.logoHanja {
+  font-family: var(--serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 0.05em;
+  text-shadow: 0 0 40px rgba(196, 146, 42, 0.4);
+}
+.logoKr {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--paper-aged);
+  letter-spacing: 0.1em;
+}
+.tagline {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--mist);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+.dataBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--jade);
+  background: rgba(45, 107, 94, 0.15);
+  border: 1px solid rgba(45, 107, 94, 0.3);
+  padding: 0.25rem 0.7rem;
+  border-radius: 100px;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--jade);
+  animation: pulse-gold 2s infinite;
+}
+
+/* ── 메인 ── */
+.main {
+  flex: 1;
+  max-width: 860px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ── 설정 패널 ── */
+.settingsPanel {
+  background: var(--white);
+  border: 1px solid var(--paper-aged);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: var(--shadow-soft);
+  animation: fadeUp 0.5s ease 0.1s both;
+}
+.settingGroup {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+.settingLabel {
+  font-family: var(--serif);
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  white-space: nowrap;
+  padding-top: 0.25rem;
+  min-width: 60px;
+  font-weight: 600;
+}
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.chip {
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 100px;
+  border: 1px solid var(--paper-aged);
+  background: var(--paper);
+  color: var(--ink-light);
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.chip:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.chipActive {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+/* ── 대화 영역 ── */
+.chatArea {
+  flex: 1;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0.5rem 0;
+}
+
+/* ── 웰컴 ── */
+.welcome {
+  text-align: center;
+  padding: 3rem 1rem;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+.welcomeIcon {
+  font-family: var(--serif);
+  font-size: 3.5rem;
+  color: var(--gold);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  background: var(--white);
+  box-shadow: 0 0 0 6px rgba(196, 146, 42, 0.08);
+}
+.welcomeTitle {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.welcomeDesc {
+  font-size: 0.88rem;
+  color: var(--mist);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+.examplesLabel {
+  font-size: 0.75rem;
+  color: var(--mist);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.05em;
+}
+.exampleList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+.exampleBtn {
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  text-align: left;
+  padding: 0.65rem 1rem;
+  background: var(--white);
+  border: 1px solid var(--paper-aged);
+  border-radius: 8px;
+  color: var(--ink-light);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  line-height: 1.5;
+}
+.exampleBtn:hover {
+  border-color: var(--gold);
+  color: var(--ink);
+  background: var(--paper);
+  transform: translateX(4px);
+}
+
+/* ── 메시지 ── */
+.message {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  animation: inkDrop 0.4s ease both;
+}
+.userMessage {
+  flex-direction: row-reverse;
+}
+.aiAvatar {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--gold-light);
+  background: var(--ink);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.messageBubble {
+  max-width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.userMessage .messageBubble {
+  align-items: flex-end;
+}
+.userText {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1rem;
+  border-radius: 14px 4px 14px 14px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.aiText {
+  background: var(--white);
+  border: 1px solid var(--paper-aged);
+  padding: 1rem 1.1rem;
+  border-radius: 4px 14px 14px 14px;
+  box-shadow: var(--shadow-soft);
+}
+.answerLine {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--ink-light);
+  margin-bottom: 0.2rem;
+}
+.answerBold {
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0.6rem 0 0.3rem;
+}
+.answerItem {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: var(--ink-light);
+  padding-left: 0.5rem;
+  border-left: 2px solid var(--gold);
+  margin: 0.2rem 0;
+}
+.heritageBox {
+  margin-top: 0.75rem;
+  padding: 0.75rem;
+  background: rgba(45, 107, 94, 0.06);
+  border: 1px solid rgba(45, 107, 94, 0.2);
+  border-radius: 8px;
+}
+.heritageTitle {
+  font-size: 0.76rem;
+  color: var(--jade);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.heritageItem {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.25rem 0;
+  border-bottom: 1px dashed rgba(45, 107, 94, 0.15);
+}
+.heritageItem:last-child { border-bottom: none; }
+.heritageName {
+  font-size: 0.82rem;
+  color: var(--ink);
+  font-weight: 500;
+}
+.heritageLocation {
+  font-size: 0.75rem;
+  color: var(--mist);
+}
+.dataNote {
+  font-size: 0.72rem;
+  color: var(--mist);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+.messageTime {
+  font-size: 0.68rem;
+  color: var(--mist);
+  padding: 0 0.25rem;
+}
+
+/* ── 로딩 ── */
+.typing {
+  display: flex;
+  gap: 5px;
+  padding: 0.5rem 0 0.2rem;
+}
+.typing span {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse-gold 1.2s infinite;
+}
+.typing span:nth-child(2) { animation-delay: 0.2s; }
+.typing span:nth-child(3) { animation-delay: 0.4s; }
+.typingLabel {
+  font-size: 0.78rem;
+  color: var(--mist);
+  font-style: italic;
+}
+
+/* ── 에러 ── */
+.errorBox {
+  background: rgba(139, 32, 32, 0.06);
+  border: 1px solid rgba(139, 32, 32, 0.25);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.84rem;
+  color: var(--brush);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── 입력창 ── */
+.inputArea {
+  background: var(--white);
+  border: 1px solid var(--paper-aged);
+  border-radius: 14px;
+  padding: 0.75rem;
+  box-shadow: var(--shadow-med);
+  position: sticky;
+  bottom: 1rem;
+  animation: fadeUp 0.5s ease 0.3s both;
+}
+.inputWrap {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-end;
+}
+.textarea {
+  flex: 1;
+  resize: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--ink);
+  line-height: 1.6;
+  padding: 0.3rem 0.2rem;
+}
+.textarea::placeholder { color: var(--mist); }
+.sendBtn {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--gold-light);
+  background: var(--ink);
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.18s ease;
+  flex-shrink: 0;
+}
+.sendBtn:hover:not(:disabled) {
+  background: var(--ink-light);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(28, 20, 16, 0.25);
+}
+.sendBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.sendBtnLoading {
+  background: var(--mist) !important;
+}
+.spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+.inputHint {
+  font-size: 0.68rem;
+  color: var(--mist);
+  text-align: center;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 600px) {
+  .logoHanja { font-size: 1.8rem; }
+  .settingGroup { flex-direction: column; gap: 0.4rem; }
+  .messageBubble { max-width: 88%; }
+}

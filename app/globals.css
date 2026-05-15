@@ -1,0 +1,78 @@
+:root {
+  --ink: #1c1410;
+  --ink-light: #3d2e22;
+  --brush: #8b2020;
+  --gold: #c4922a;
+  --gold-light: #e8c97a;
+  --paper: #f5f0e8;
+  --paper-dark: #ede4d0;
+  --paper-aged: #d9ccb0;
+  --jade: #2d6b5e;
+  --mist: #7a8e8a;
+  --white: #faf8f4;
+
+  --serif: "Noto Serif KR", "Batang", serif;
+  --sans: "Noto Sans KR", sans-serif;
+
+  --shadow-soft: 0 2px 20px rgba(28, 20, 16, 0.08);
+  --shadow-med: 0 4px 40px rgba(28, 20, 16, 0.14);
+  --shadow-deep: 0 8px 60px rgba(28, 20, 16, 0.22);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.7;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(196, 146, 42, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(45, 107, 94, 0.05) 0%, transparent 50%);
+}
+
+/* 한지 텍스처 */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--paper-dark); }
+::-webkit-scrollbar-thumb { background: var(--paper-aged); border-radius: 3px; }
+
+/* 애니메이션 */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes brushIn {
+  from { opacity: 0; transform: scaleX(0); transform-origin: left; }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+@keyframes inkDrop {
+  0%   { opacity: 0; transform: scale(0.95) translateY(-8px); }
+  60%  { transform: scale(1.01) translateY(2px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(196, 146, 42, 0.3); }
+  50%       { box-shadow: 0 0 0 8px rgba(196, 146, 42, 0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
