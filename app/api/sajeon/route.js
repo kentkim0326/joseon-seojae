@@ -70,7 +70,7 @@ export async function POST(request) {
 ${era ? `\n설정 시대: ${era}` : ""}${heritageContext}`;
 
     const response = await client.messages.create({
-      model: "claude-sonnet-4-20250514",
+      model: "claude-sonnet-4-6",
       max_tokens: 1000,
       system: systemPrompt,
       messages: [{ role: "user", content: question }],
