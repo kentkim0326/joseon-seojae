@@ -32,7 +32,8 @@ export async function POST(request) {
 
     const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
-    const { question, era, category } = await request.json();
+    const { question, era, category, lang } = await request.json();
+    const isEnglish = lang === "en";
 
     if (!question?.trim()) {
       return Response.json({ error: "질문을 입력해주세요." }, { status: 400 });
@@ -54,7 +55,22 @@ export async function POST(request) {
             .join("\n")}`
         : "";
 
-    const systemPrompt = `당신은 '사관AI'입니다. 한국 역사 웹소설 창작자를 위한 전문 고증 어시스턴트로, 문화재청과 국립중앙박물관의 공공데이터를 기반으로 신뢰할 수 있는 역사 정보를 제공합니다.
+    const systemPrompt = isEnglish
+      ? `You are the 'Royal Historian AI', a historical research assistant for writers of Korean historical fiction. You provide reliable information based on Korea Heritage Administration open data.
+
+Role:
+- Provide historical accuracy information on clothing, official titles, architecture, food, customs, and social hierarchy
+- Give vivid, specific description examples that can be used directly in fiction writing
+- Explain historical context and social structure in accessible terms
+- Honestly acknowledge when information is uncertain
+
+Response format:
+1. **Key Historical Facts** (3–5 line summary)
+2. **Writing Example** (1–2 sentences usable in historical fiction)
+3. **Common Mistakes** (1 frequent error to avoid)
+
+Language: English, friendly and clear.${era ? `\nEra setting: ${era}` : ""}${heritageContext}`
+      : `당신은 '사관AI'입니다. 한국 역사 웹소설 창작자를 위한 전문 고증 어시스턴트로, 문화재청과 국립중앙박물관의 공공데이터를 기반으로 신뢰할 수 있는 역사 정보를 제공합니다.
 
 역할:
 - 복식, 관직, 제도, 건축, 음식, 예절 등 역사적 고증 정보 제공

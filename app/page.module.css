@@ -31,11 +31,31 @@
     rgba(196, 146, 42, 0.04) 41px
   );
 }
+.headerTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.langToggle {
+  background: rgba(196, 146, 42, 0.15);
+  border: 1px solid rgba(196, 146, 42, 0.4);
+  color: var(--gold);
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+  margin-top: 0.4rem;
+}
+.langToggle:hover {
+  background: rgba(196, 146, 42, 0.28);
+}
 .logo {
   display: flex;
   align-items: baseline;
   gap: 0.75rem;
-  margin-bottom: 0.5rem;
 }
 .logoHanja {
   font-family: var(--serif);
